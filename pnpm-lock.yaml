@@ -3,36 +3,31 @@ lockfileVersion: 5.3
 importers:
 
   .:
-    specifiers:
-      '@test/utils': workspace:^1.0.0
-    dependencies:
-      '@test/utils': link:packages/utils
+    specifiers: {}
 
   packages/example:
     specifiers:
       '@babel/core': ^7.17.5
       '@babel/preset-env': ^7.16.11
-      '@test/ui': workspace:^1.0.0
-      '@test/utils': workspace:*
       babel-loader: ^8.2.3
       html-webpack-plugin: ^5.5.0
       lodash: ^4.17.21
+      nrz-utils: ^1.0.2
       webpack: ^5.70.0
       webpack-cli: ^4.9.2
       webpack-dev-server: ^4.7.4
     dependencies:
       '@babel/core': 7.17.5
       '@babel/preset-env': 7.16.11_@babel+core@7.17.5
-      '@test/ui': link:../ui
-      '@test/utils': link:../utils
       babel-loader: 8.2.3_ed870ac3ba52c4ec230ba2bc3dbb311c
       html-webpack-plugin: 5.5.0_webpack@5.70.0
       lodash: 4.17.21
+      nrz-utils: 1.0.2_lodash@4.17.21
       webpack: 5.70.0_webpack-cli@4.9.2
       webpack-cli: 4.9.2_6d3cb84eb7e855ae6fc0a3ee585c0c26
       webpack-dev-server: 4.7.4_webpack-cli@4.9.2+webpack@5.70.0
     dependenciesMeta:
-      '@test/utils':
+      nrz-utils:
         injected: true
 
   packages/ui:
@@ -2988,6 +2983,14 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-key: 3.1.1
+    dev: false
+
+  /nrz-utils/1.0.2_lodash@4.17.21:
+    resolution: {integrity: sha512-pj057OD6qL3+7ITNyNGLIReJ7IRurPXWOxdEFHFrUiF9RctzJZYs84iVGg5Q0jZC6S+qWIIwCFrwCoYyUQpVQA==}
+    peerDependencies:
+      lodash: '>=4.13.0'
+    dependencies:
+      lodash: 4.17.21
     dev: false
 
   /nth-check/2.0.1:

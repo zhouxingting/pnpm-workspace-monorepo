@@ -1,5 +1,5 @@
 {
-  "name": "@test/web",
+  "name": "nrz-web",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -9,8 +9,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@test/utils": "workspace:^1.0.0"
-  }
+  "license": "ISC"
 }
