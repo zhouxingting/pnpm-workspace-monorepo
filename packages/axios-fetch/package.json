@@ -1,9 +1,8 @@
 {
-  "name": "nrz-web",
+  "name": "axios-fetch-zxt",
   "version": "1.0.0",
   "description": "",
-  "private": true,
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
