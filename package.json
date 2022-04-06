@@ -4,7 +4,7 @@
   "private": true,
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "pnpm run test --filter axios-fetch-zxt"
   },
   "keywords": [],
   "author": "",

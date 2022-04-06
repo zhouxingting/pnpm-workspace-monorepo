@@ -1,7 +1,7 @@
-import { a } from 'axios-fetch-zxt'
+// import { a } from 'axios-fetch-zxt'
 
 const App = () => {
-  console.log(a)
+  // console.log(a)
   return <div>hello word</div>
 }
 
