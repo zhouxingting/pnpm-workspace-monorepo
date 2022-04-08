@@ -1,7 +1,7 @@
 import { AxiosFetchInterceptorManager } from "./typing";
 
 class Interceptor implements AxiosFetchInterceptorManager<any> {
-  handlers: any[];
+  handlers = [];
   use(
     onFulfilled: (value: any) => any,
     onRejected: (error: any) => any

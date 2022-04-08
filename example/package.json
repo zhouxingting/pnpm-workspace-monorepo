@@ -1,9 +1,8 @@
 {
-  "name": "example",
+  "name": "test-example",
   "version": "1.0.0",
   "private": true,
   "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "vite"
   },

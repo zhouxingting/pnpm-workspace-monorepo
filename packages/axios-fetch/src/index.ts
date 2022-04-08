@@ -123,7 +123,7 @@ function createInstance(defaultConfig: Options = {}): AxiosFetchStatic {
       const query = options.paramsSerializer ? options.paramsSerializer(options.params) : options.params instanceof URLSearchParams ? options.params : new URLSearchParams(options.params)
       url += divider + query
     }
-    
+
     /** 转换header的大小写 */
     const Headers = {}, mergeHeaders = deepMerge(config.headers, customHeaders);
     Object.keys(mergeHeaders).forEach(function storeLowerName(key) {
@@ -131,8 +131,7 @@ function createInstance(defaultConfig: Options = {}): AxiosFetchStatic {
     });
 
     /** 定义接口请求 */
-    const fetchFunc = options.fetch || fetch
-
+    const fetchFunc = options.fetch || fetch;
     return fetchFunc(url, {
       method: options.method || "get",
       headers: deepMerge(config.headers, customHeaders),

@@ -4,6 +4,7 @@
   "private": true,
   "description": "",
   "scripts": {
+    "dev": "pnpm run dev --filter test-example",
     "test": "pnpm run test --filter axios-fetch-zxt"
   },
   "keywords": [],

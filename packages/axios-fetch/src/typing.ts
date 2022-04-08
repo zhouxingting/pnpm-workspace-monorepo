@@ -35,7 +35,10 @@ export type Options = {
   params?: Record<string, any> | URLSearchParams;
   paramsSerializer?: (params: Options['params']) => string;
   withCredentials?: boolean;
-  auth?: string;
+  auth?:  {
+    username: string;
+    password: string;
+  };
   xsrfCookieName?: string;
   xsrfHeaderName?: string;
   validateStatus?: (status: number) => boolean;
@@ -89,7 +92,7 @@ export interface CancelToken {
 
 export interface AxiosFetchInstance {
   <T = any>(config: Options): Promise<AxiosResponse<T>>
-  <T = any>(url: string | Options, config: Options): Promise<AxiosResponse<T>>
+  <T = any>(url: string | Options, config?: Options): Promise<AxiosResponse<T>>
   interceptors: {
     request: AxiosFetchInterceptorManager<Options>,
     response: AxiosFetchInterceptorManager<any>
