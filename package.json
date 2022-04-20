@@ -5,7 +5,8 @@
   "description": "",
   "scripts": {
     "dev": "pnpm run dev --filter test-example",
-    "test": "pnpm run test --filter axios-fetch-zxt"
+    "test": "pnpm run test --filter axios-fetch-zxt",
+    "release": "node scripts/release.js"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +14,12 @@
   "dependencies": {
     "@types/node": "^17.0.23",
     "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "chalk": "^5.0.1",
+    "enquirer": "^2.3.6",
+    "execa": "^6.1.0",
+    "minimist": "^1.2.6",
+    "semver": "^7.3.7"
   }
 }
