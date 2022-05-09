@@ -8,7 +8,6 @@ node_modules
 
 # production
 dist
-
 # misc
 .eslintcache
 .DS_Store
