@@ -7,7 +7,7 @@ import { AxiosFetchStatic, AxiosResponse, Options, Headers } from "./typing";
 const defaultConfig: Options = {};
 
 /** 深度合并 */
-export function deepMerge(...arg: any[]): any {
+export function deepMerge(..._arg: any[]): any {
   let result = {};
   const assignValue = (value, key) => {
     if (
@@ -92,20 +92,20 @@ function createInstance(defaultConfig: Options = {}): AxiosFetchStatic {
 
     /** 转换请求数据 */
     (options.transformRequest || []).map((f) => {
-      data = f(data, options.headers) || data
-    })
+      data = f(data, options.headers) || data;
+    });
 
     /** 默认使用json格式 */
-    if(data && toString.call(data) === "[object Object]") {
+    if (data && toString.call(data) === "[object Object]") {
       data = JSON.stringify(data);
-      customHeaders['content-type'] = 'application/json';
+      customHeaders["content-type"] = "application/json";
     }
 
     /** 防xsrf攻击 */
     const m =
-      typeof document !== 'undefined' &&
+      typeof document !== "undefined" &&
       document.cookie.match(
-        RegExp('(^|; )' + options.xsrfCookieName + '=([^;]*)')
+        RegExp("(^|; )" + options.xsrfCookieName + "=([^;]*)")
       );
     if (m) customHeaders[options.xsrfHeaderName] = m[2];
 
@@ -114,18 +114,23 @@ function createInstance(defaultConfig: Options = {}): AxiosFetchStatic {
     }
 
     if (options.baseURL) {
-      url = url.replace(/^(?!.*\/\/)\/?(.*)$/, options.baseURL + '/$1');
+      url = url.replace(/^(?!.*\/\/)\/?(.*)$/, options.baseURL + "/$1");
     }
 
     /** 处理params参数 */
-    if(options.params) {
-      const divider = ~url.indexOf('?') ? '&' : '?'
-      const query = options.paramsSerializer ? options.paramsSerializer(options.params) : options.params instanceof URLSearchParams ? options.params : new URLSearchParams(options.params)
-      url += divider + query
+    if (options.params) {
+      const divider = ~url.indexOf("?") ? "&" : "?";
+      const query = options.paramsSerializer
+        ? options.paramsSerializer(options.params)
+        : options.params instanceof URLSearchParams
+        ? options.params
+        : new URLSearchParams(options.params);
+      url += divider + query;
     }
 
     /** 转换header的大小写 */
-    const Headers = {}, mergeHeaders = deepMerge(config.headers, customHeaders);
+    const Headers = {},
+      mergeHeaders = deepMerge(config.headers, customHeaders);
     Object.keys(mergeHeaders).forEach(function storeLowerName(key) {
       Headers[key.toLowerCase()] = mergeHeaders[key];
     });
@@ -135,79 +140,86 @@ function createInstance(defaultConfig: Options = {}): AxiosFetchStatic {
     return fetchFunc(url, {
       method: options.method || "get",
       headers: deepMerge(config.headers, customHeaders),
-      credentials: config.withCredentials ? 'include' : 'same-origin',
+      credentials: config.withCredentials ? "include" : "same-origin",
       signal: options.cancelToken,
-      body: data
-    }).then(res => {
+      body: data,
+    }).then((res) => {
       for (const i in res) {
-        if (typeof res[i] !== 'function') response[i] = res[i];
+        if (typeof res[i] !== "function") response[i] = res[i];
       }
 
-      const ok = options.validateStatus ? options.validateStatus(res.status) : res.ok;
+      const ok = options.validateStatus
+        ? options.validateStatus(res.status)
+        : res.ok;
 
-      if(options.responseType === 'stream') {
+      if (options.responseType === "stream") {
         response.data = res.body;
-        return response
+        return response;
       }
       const responseType = res.headers
-      .get('content-type')
-      .includes('application/json')
-      ? 'json'
-      : 'text';
+        .get("content-type")
+        .includes("application/json")
+        ? "json"
+        : "text";
 
       return res[options.responseType || responseType]().then((rd) => {
         response.data = rd;
 
-        if(ok) {
+        if (ok) {
           /** 响应成功拦截 */
-          redAxios.interceptors.response.handlers.forEach(handler => {
-              response = (handler && handler.onFulfilled(response)) || response
+          redAxios.interceptors.response.handlers.forEach((handler) => {
+            response = (handler && handler.onFulfilled(response)) || response;
           });
 
           /** 转换数据 */
-          response.data = (options.transformResponse || []).reduce((pre, f) => f(pre, options.headers) || rd, rd);
+          response.data = (options.transformResponse || []).reduce(
+            (pre, f) => f(pre, options.headers) || rd,
+            rd
+          );
 
-          return response
+          return response;
         }
 
-        const error = Promise.reject(createError(
-          'Request failed with status code' + res.status,
-          response.config,
-          rd.code,
-          response
-        ))
+        const error = Promise.reject(
+          createError(
+            "Request failed with status code" + res.status,
+            response.config,
+            rd.code,
+            response
+          )
+        );
 
-        redAxios.interceptors.response.handlers.forEach(handler => {
-          if(handler && handler.onRejected) {
-            handler.onRejected(error)
+        redAxios.interceptors.response.handlers.forEach((handler) => {
+          if (handler && handler.onRejected) {
+            handler.onRejected(error);
           }
         });
 
-        return error
-      })
-    })
+        return error;
+      });
+    });
   }
 
   function CancelToken(c) {
-    if (typeof c !== 'function') {
-      throw new TypeError('executor must be a function.')
+    if (typeof c !== "function") {
+      throw new TypeError("executor must be a function.");
     }
     const ac = new AbortController();
     c(ac.abort.bind(ac));
-    
-    return ac.signal
+
+    return ac.signal;
   }
 
   CancelToken.source = () => {
     const ac = new AbortController();
     return {
       token: ac.signal,
-      cancel: ac.abort.bind(ac)
-    }
-  }
+      cancel: ac.abort.bind(ac),
+    };
+  };
 
   redAxios.CancelToken = CancelToken as any;
-  redAxios.defaults = defaultConfig
+  redAxios.defaults = defaultConfig;
   redAxios.create = createInstance;
 
   return redAxios;

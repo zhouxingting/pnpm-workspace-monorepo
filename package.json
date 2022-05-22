@@ -4,21 +4,23 @@
   "private": true,
   "description": "",
   "scripts": {
-    "dev": "pnpm run dev --filter test-example",
-    "test": "pnpm run test --filter axios-fetch-zxt",
-    "release": "node scripts/release.js"
+    "test": "pnpm test --filter axios-fetch-zxt",
+    "release": "node script/release.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "build": "pnpm build --filter axios-fetch-zxt"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^17.0.23",
+    "conventional-changelog-cli": "^2.0.31",
     "typescript": "^4.6.3"
   },
   "devDependencies": {
-    "chalk": "^5.0.1",
+    "chalk": "4.*",
     "enquirer": "^2.3.6",
-    "execa": "^6.1.0",
+    "execa": "^4.0.2",
     "minimist": "^1.2.6",
     "semver": "^7.3.7"
   }

@@ -1,13 +1,21 @@
 {
   "name": "axios-fetch-zxt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.ts",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "author": "lazzhouxingting",
+  "files": [
+    "esm",
+    "cjs"
+  ],
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "build": "pnpm run build:esm && pnpm run build:cjs",
+    "build:esm": "tsc --module ES6 --outDir esm",
+    "build:cjs": "tsc --module CommonJS --outDir cjs"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "vitest": "^0.8.1",

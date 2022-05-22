@@ -16,7 +16,6 @@
     "removeComments": false,
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
-    "types": ["jest", "puppeteer", "node"],
     "rootDir": ".",
     "paths": {
       "axios-fetch-zxt": ["packages/axios-fetch"],
