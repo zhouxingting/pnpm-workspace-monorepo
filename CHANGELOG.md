@@ -1,3 +1,7 @@
+# [1.0.0](https://github.com/zhouxingting/pnpm-workspace-monorepo/compare/v1.1.0...v1.0.0) (2022-05-22)
+
+
+
 # 1.0.0 (2022-05-22)
 
 

@@ -102,7 +102,7 @@ async function main() {
   // }
 
   step("\nGenerating changelog...");
-  // await run(`pnpm`, ["changelog"]);
+  await run(`pnpm`, ["changelog"]);
   step("\nUpdating lockfile...");
 
   // await run(`pnpm`, ["install", "--prefer-offline"]);
