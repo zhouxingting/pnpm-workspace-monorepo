@@ -185,7 +185,7 @@ async function publishPackage(pkg, version, runIfNotDry) {
     releaseTag = "rc";
   }
 
-  step(`Publishing ${pkgName}...`);
+  step(`Publishing ${pkg}...`);
   try {
     await runIfNotDry(
       // note: use of yarn is intentional here as we rely on its publishing
@@ -204,10 +204,10 @@ async function publishPackage(pkg, version, runIfNotDry) {
         stdio: "pipe",
       }
     );
-    console.log(chalk.green(`Successfully published ${pkgName}@${version}`));
+    console.log(chalk.green(`Successfully published ${pkg}@${version}`));
   } catch (e) {
     if (e.stderr.match(/previously published/)) {
-      console.log(chalk.red(`Skipping already published: ${pkgName}`));
+      console.log(chalk.red(`Skipping already published: ${pkg}`));
     } else {
       throw e;
     }
