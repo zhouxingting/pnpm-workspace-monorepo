@@ -175,8 +175,8 @@ async function publishPackage(pkg, version, runIfNotDry) {
     return;
   }
   let releaseTag = null;
-  if (args.tag) {
-    releaseTag = args.tag;
+  if (agrs.tag) {
+    releaseTag = agrs.tag;
   } else if (version.includes("alpha")) {
     releaseTag = "alpha";
   } else if (version.includes("beta")) {
