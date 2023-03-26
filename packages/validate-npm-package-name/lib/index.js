@@ -94,7 +94,7 @@ function validate(name) {
 function done(errors, warnings) {
   var resultes = {
     validForNewPackages: !errors.length && !warnings.length,
-    validForOldPackages: !warnings.length,
+    validForOldPackages: !errors.length,
     warnings: warnings,
     errors: errors,
   };
