@@ -5,6 +5,7 @@
   "description": "",
   "scripts": {
     "test": "pnpm test --filter axios-fetch-zxt",
+    "test-validate": "pnpm test --filter validate-npm-package-name-zxt",
     "release": "node script/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "build": "pnpm build --filter axios-fetch-zxt"
@@ -22,6 +23,7 @@
     "enquirer": "^2.3.6",
     "execa": "^4.0.2",
     "minimist": "^1.2.6",
-    "semver": "^7.3.7"
+    "semver": "^7.3.7",
+    "vitest": "^0.8.1"
   }
 }

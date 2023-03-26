@@ -1,0 +1,15 @@
+{
+  "name": "validate-npm-package-name-zxt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "builtins": "^5.0.1"
+  }
+}

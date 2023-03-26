@@ -18,7 +18,12 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "vitest": "^0.8.1",
-    "jasmine": "^4.0.2"
+    "@types/jasmine": "^4.3.1",
+    "@types/jasmine-node": "^1.14.36",
+    "jasmine": "^4.5.0",
+    "jasmine-ajax": "^4.0.0",
+    "jasmine-core": "^4.5.0",
+    "jasmine-node": "^3.0.0",
+    "node-fetch": "^3.3.0"
   }
 }
